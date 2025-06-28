@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Outfit Suggester</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #1f2937;
+    }
+    form {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+      color: #374151;
+    }
+    select, button {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .suggestion {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Outfit Suggester</h1>
+  <form id="outfitForm">
+    <label for="gender">Gender</label>
+    <select id="gender" required>
+      <option value="">--Select--</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+      <option value="non-binary">Non-binary</option>
+    </select>
+
+    <label for="occasion">Occasion</label>
+    <select id="occasion" required>
+      <option value="">--Select--</option>
+      <option value="work">Work</option>
+      <option value="casual">Casual</option>
+      <option value="party">Party</option>
+      <option value="interview">Interview</option>
+    </select>
+
+    <label for="weather">Weather</label>
+    <select id="weather" required>
+      <option value="">--Select--</option>
+      <option value="sunny">Sunny</option>
+      <option value="cold">Cold</option>
+      <option value="rainy">Rainy</option>
+    </select>
+
+    <label for="mood">Mood</label>
+    <select id="mood" required>
+      <option value="">--Select--</option>
+      <option value="chill">Chill</option>
+      <option value="confident">Confident</option>
+      <option value="romantic">Romantic</option>
+    </select>
+
+    <button type="submit">Get Suggestion</button>
+  </form>
+
+  <div class="suggestion" id="suggestionResult"></div>
+
+  <script>
+    document.getElementById('outfitForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const gender = document.getElementById('gender').value;
+      const occasion = document.getElementById('occasion').value;
+      const weather = document.getElementById('weather').value;
+      const mood = document.getElementById('mood').value;
+
+      const suggestion = `For a ${gender} attending a ${occasion} event on a ${weather} day feeling ${mood}, consider wearing a white cotton shirt, fitted jeans, and <a href='#' target='_blank'>these sneakers</a>.`;
+
+      document.getElementById('suggestionResult').innerHTML = "<strong>AI Suggestion:</strong><br>" + suggestion;
+    });
+  </script>
+</body>
+</html>
